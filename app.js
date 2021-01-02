@@ -1,9 +1,16 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
-const db = require('./config/mongoose')
+const routers = require('./routes')
+const bodyParser = require('body-parser')
 
 const app = express()
 const port = 3000
+
+//Set body parser
+app.use(bodyParser.urlencoded({ extended: true }))
+
+//Include mongoose
+require('./config/mongoose')
 
 //Set express static routes
 app.use(express.static('public'))
@@ -12,10 +19,8 @@ app.use(express.static('public'))
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
-app.get('/', (req, res) => {
-  console.log('Web app start')
-  res.render('index')
-})
+//Set routers
+app.use(routers)
 
 app.listen(port, () => {
   console.log('Start and listen on localhost:3000/')

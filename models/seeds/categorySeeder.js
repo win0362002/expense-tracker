@@ -5,23 +5,23 @@ db.once('open', () => {
   Category.create(
     {
       name: '家居物業',
-      image: '<i class="fas fa-home"></i>',
+      image: '<i class="fas fa-home fa-fw"></i>',
     },
     {
       name: '交通出行',
-      image: '<i class="fas fa-shuttle-van"></i>',
+      image: '<i class="fas fa-shuttle-van fa-fw"></i>',
     },
     {
       name: '休閒娛樂',
-      image: '<i class="fas fa-grin-beam"></i>',
+      image: '<i class="fas fa-grin-beam fa-fw"></i>',
     },
     {
       name: '餐飲食品',
-      image: '<i class="fas fa-utensils"></i>',
+      image: '<i class="fas fa-utensils fa-fw"></i>',
     },
     {
       name: '其他',
-      image: '<i class="fas fa-pen"></i>',
+      image: '<i class="fas fa-pen fa-fw"></i>',
     }
   ).then(() => {
     console.log('Create category seed data done!')

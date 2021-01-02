@@ -9,7 +9,11 @@ const recordSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  category: {
+  dateString: {
+    type: String,
+    default: '',
+  },
+  categoryImage: {
     type: String,
     required: true,
   },

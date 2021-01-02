@@ -1,0 +1,50 @@
+<div style="margin-left: 35%; margin-top:30px; width: 300px;">
+  <div class="title-wrapper d-flex justify-content-between" style="width: 100%;">
+    <p>*必填欄位</p>
+    <h5 class="mr-4">請輸入你的支出</h5>
+  </div>
+
+  <form action="/records/" method="POST" style="margin-top: 30px;">
+    {{!-- Expense Name --}}
+    <div class="new-list-wrapper d-flex justify-content-between align-items-center my-3">
+      <h5>名稱*：</h5>
+      <div class="input-group" style="width: 200px;">
+        <input type="text" class="form-control" name="name" placeholder="" required>
+      </div>
+    </div>
+
+    {{!-- Expense Date --}}
+    <div class="new-list-wrapper d-flex justify-content-between align-items-center my-4">
+      <h5>日期*：</h5>
+      <div class="input-group" style="width: 200px;">
+        <input type="date" class="form-control" name="date" placeholder="" required>
+      </div>
+    </div>
+
+    {{!-- Expense Category --}}
+    <div class="new-list-wrapper d-flex justify-content-between align-items-center my-3">
+      <h5>類別*：</h5>
+      <div style="width: 200px;">
+        <select name="category" class="form-control" required>
+          <option value="" selected>類別</option>
+          {{#each categories}}
+          <option value="{{this.name}}">{{this.name}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+
+    {{!-- Expense Amount --}}
+    <div class="new-list-wrapper d-flex justify-content-between align-items-center my-4">
+      <h5>金額*：</h5>
+      <div class="input-group" style="width: 200px;">
+        <input type="number" class=" form-control" name="amount" placeholder="" required>
+      </div>
+    </div>
+
+    {{!-- Create Button --}}
+    <div class="d-flex flex-row-reverse my-4">
+      <button class="btn btn-warning" type="submit" style="width: 200px;">新增支出</button>
+    </div>
+  </form>
+</div>

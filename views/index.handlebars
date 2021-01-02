@@ -1,0 +1,51 @@
+<div style="margin-left: 35%;">
+  {{!-- Type select --}}
+  <form action="/filter">
+    <div class="form-group my-5" style="width: 300px;">
+      <select class="form-control">
+        <option selected>類別</option>
+        {{#each categories}}
+        <option value="{{this.name}}">{{this.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </form>
+
+  {{!-- Total Amount --}}
+  <div class="d-flex my-2" style="width: 300px;">
+    <div class="Total-wrapper d-flex justify-content-between" style="width: 100%;">
+      <div class="description">總金額：</div>
+      <h1 class="amount text-warning">{{totalAmount}}</h1>
+    </div>
+  </div>
+
+  {{!-- Record List --}}
+  <div class="d-flex">
+    <div class="RecordList-wrapper">
+      {{#each records}}
+      <div class="d-flex align-items-center">
+        <div class="Record-wrapper d-flex align-items-center m-1 px-3"
+          style="height:60px; background-color: #ddddaa; border-radius: 15%; width: 300px;">
+          <span style=" font-size: 2em; color: Tomato; width: 35px;">
+            {{{this.categoryImage}}}
+          </span>
+          <div class="m-2">
+            <h6 class="m-0">{{this.name}}</h6>
+            <p class="m-0">{{this.dateString}}</p>
+          </div>
+          <h3 class="ml-auto">{{this.amount}}</h3>
+        </div>
+        <a class="ml-5" href="" style="text-decoration: none;">修改</a>
+        <a class="ml-3" href="" style="text-decoration: none;">刪除</a>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+
+  {{!-- Add new button --}}
+  <div class="my-5" style="margin-left:80px;">
+    <a href="/records/new">
+      <button type="button" class="btn btn-warning btn-outline-dark" style="width: 150px;">新增支出</button>
+    </a>
+  </div>
+</div>
