@@ -1,15 +1,19 @@
 <div style="margin-left: 35%;">
   {{!-- Type select --}}
-  <form action="/filter">
-    <div class="form-group my-5" style="width: 300px;">
-      <select class="form-control">
+  <div class="my-5" style="width: 300px;">
+    <form action="/filter" method="POST">
+      <select name="category" class="form-control" onchange="this.form.submit()">
+        {{#if targetCategory}}
+        <option selected>{{targetCategory}}</option>
+        {{else}}
         <option selected>類別</option>
+        {{/if}}
         {{#each categories}}
         <option value="{{this.name}}">{{this.name}}</option>
         {{/each}}
       </select>
-    </div>
-  </form>
+    </form>
+  </div>
 
   {{!-- Total Amount --}}
   <div class="d-flex my-2" style="width: 300px;">
