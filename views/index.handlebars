@@ -35,8 +35,12 @@
           </div>
           <h3 class="ml-auto">{{this.amount}}</h3>
         </div>
-        <a class="ml-5" href="/records/{{this._id}}/edit" style="text-decoration: none;">修改</a>
-        <a class="ml-3" href="" style="text-decoration: none;">刪除</a>
+        <form class="ml-4" action="/records/{{this._id}}/edit" method="GET" style="text-decoration: none;">
+          <button type="submit" class="btn btn-link">修改</button>
+        </form>
+        <form action="/records/{{this._id}}?_method=DELETE" method="POST" style="text-decoration: none;">
+          <button type="submit" class="btn btn-link">刪除</button>
+        </form>
       </div>
       {{/each}}
     </div>

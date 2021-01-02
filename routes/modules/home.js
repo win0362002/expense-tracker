@@ -16,17 +16,17 @@ router.get('/', (req, res) => {
         totalAmount += record.amount
 
         //Handle date format
-        let date = new Date(record.date)
+        let newDate = new Date(record.date)
+        const year = newDate.getFullYear()
+        const month = newDate.getMonth()
+        const date = newDate.getDate()
+
         record.dateString =
-          date.getFullYear().toString() +
+          year +
           '/' +
-          (date.getMonth() > 8
-            ? (date.getMonth() + 1).toString()
-            : '0' + (date.getMonth() + 1).toString()) +
+          (month > 8 ? month + 1 : '0' + (month + 1)) +
           '/' +
-          (date.getDate() > 9
-            ? date.getDate().toString()
-            : '0' + date.getDate().toString())
+          (date > 9 ? date : '0' + date)
       })
     })
     .then(() => {

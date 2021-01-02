@@ -55,16 +55,16 @@ router.get('/:id/edit', (req, res) => {
     .lean()
     .then((record) => {
       localRecord = record
+      const year = record.date.getFullYear()
+      const month = record.date.getMonth()
+      const date = record.date.getDate()
+
       localRecord.dateString =
-        localRecord.date.getFullYear().toString() +
+        year +
         '-' +
-        (localRecord.date.getMonth() > 9
-          ? (localRecord.date.getMonth() + 1).toString()
-          : '0' + (localRecord.date.getMonth() + 1).toString()) +
+        (month > 8 ? month + 1 : '0' + (month + 1)) +
         '-' +
-        (localRecord.date.getDate() > 9
-          ? localRecord.date.getDate().toString()
-          : '0' + localRecord.date.getDate().toString())
+        (date > 9 ? date : '0' + date)
     })
     .then(() => {
       return Category.find()
@@ -116,6 +116,17 @@ router.put('/:id', (req, res) => {
         })
         .then(() => res.redirect('/'))
         .catch((error) => console.log(error))
+    })
+    .catch((error) => console.log(error))
+})
+
+//Delete expense record
+router.delete('/:id', (req, res) => {
+  const id = req.params.id
+  return Record.findById(id)
+    .then((record) => {
+      record.remove()
+      res.redirect('/')
     })
     .catch((error) => console.log(error))
 })
