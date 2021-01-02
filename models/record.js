@@ -13,6 +13,10 @@ const recordSchema = new Schema({
     type: String,
     default: '',
   },
+  category: {
+    type: String,
+    required: true,
+  },
   categoryImage: {
     type: String,
     required: true,
