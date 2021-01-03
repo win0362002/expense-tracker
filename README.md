@@ -1,6 +1,6 @@
 # 我的餐廳清單
 
-一個使用 node.js + express + handlebars 完成的名為"老爸的私房錢"的記帳Ｗ eb App
+一個使用 node.js + express + handlebars 完成的名為"老爸的私房錢"的記帳 Web App
 
 ## 功能描述 (features)
 
