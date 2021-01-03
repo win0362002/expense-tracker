@@ -48,7 +48,6 @@ router.post('/', (req, res) => {
 //Add edit page route handle
 router.get('/:id/edit', (req, res) => {
   const id = req.params.id
-  let localCategories = []
   let localRecord = []
 
   Record.findById(id)
@@ -67,19 +66,12 @@ router.get('/:id/edit', (req, res) => {
         (date > 9 ? date : '0' + date)
     })
     .then(() => {
-      return Category.find()
+      return Category.find({ name: localRecord.category })
         .lean()
         .then((categories) => {
-          categories.forEach((category) => {
-            if (category.name.trim() !== localRecord.category.trim()) {
-              localCategories.push(category)
-            }
-          })
-        })
-        .then(() => {
           res.render('edit', {
             record: localRecord,
-            categories: localCategories,
+            categories,
           })
         })
         .catch((error) => console.log(error))

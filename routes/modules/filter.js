@@ -8,28 +8,26 @@ router.post('/', (req, res) => {
   let totalAmount = 0
   let filteredRecords = []
   let localCategories = []
-  Record.find()
+  Record.find({ category: targetCategory })
     .lean()
     .then((records) => {
       records.forEach((record) => {
-        if (record.category.trim() === targetCategory) {
-          totalAmount += record.amount
+        totalAmount += record.amount
 
-          //Handle date format
-          let newDate = new Date(record.date)
-          const year = newDate.getFullYear()
-          const month = newDate.getMonth()
-          const date = newDate.getDate()
+        //Handle date format
+        let newDate = new Date(record.date)
+        const year = newDate.getFullYear()
+        const month = newDate.getMonth()
+        const date = newDate.getDate()
 
-          record.dateString =
-            year +
-            '/' +
-            (month > 8 ? month + 1 : '0' + (month + 1)) +
-            '/' +
-            (date > 9 ? date : '0' + date)
+        record.dateString =
+          year +
+          '/' +
+          (month > 8 ? month + 1 : '0' + (month + 1)) +
+          '/' +
+          (date > 9 ? date : '0' + date)
 
-          filteredRecords.push(record)
-        }
+        filteredRecords.push(record)
       })
     })
     .then(() => {
